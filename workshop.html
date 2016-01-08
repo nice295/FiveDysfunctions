@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<script>
+	$(document).ready(function(){
+		$(".js-done").on("click", function(e) {
+			e.preventDefault();	
+
+	        var question1Value = parseInt($(':radio[name="question1"]:checked').val());
+	        var question2Value = parseInt($(':radio[name="question2"]:checked').val());
+
+	        console.log("Question 1: " + question1Value);
+	        console.log("Question 2: " + question2Value);
+	        console.log("Group1: " + (question1Value + question2Value));
+		});
+	});
+	</script>
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Bootstrap Tutorial</h1> 
+    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
+    responsive, mobile-first projects on the web.</p> 
+  </div>
+  <p>먼저 자신의 답을 확인하시고, 그 결과를 조원들과 함께 확인해 보세요.</p> 
+</div>
+
+<div class="container">
+<form>
+
+	<div class="form-group">
+		<div class="row">
+			<div class="col-xs-12 col-md-4">
+				<label for="question1">이것은 첫번째 질문입니다.</label>
+			</div>
+			<div class="col-xs-12 col-md-8">
+				<label class="radio-inline">
+				  <input type="radio" name="question1" id="inlineRadio1" value="1"> 1
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="question1" id="inlineRadio2" value="2"> 2
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="question1" id="inlineRadio3" value="3"> 3
+				</label>
+			</div>
+		</div> <!-- row -->
+	</div>
+
+	<div class="form-group">
+		<label for="question1">이것은 두번째 질문입니다.</label>
+		<label class="radio-inline">
+		  <input type="radio" name="question2" id="inlineRadio1" value="1"> 1
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="question2" id="inlineRadio2" value="2"> 2
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="question2" id="inlineRadio3" value="3"> 3
+		</label>
+	</div>
+
+	<button type="submit" class="js-done btn btn-default">완료</button>
+
+</form>
+
+</div>
+</body>
+</html>
