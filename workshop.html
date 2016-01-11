@@ -80,9 +80,9 @@
 					"<p><strong>책임의 회피: </strong>" + group4Sum + "</p>" +
 					"<p><strong>결과에 대한 무관심: </strong>" + group5Sum + "</p>"
 					);
-				$("#result").show(500);
+				$("#result").show();
 
-				$('html, body').animate({scrollBottom:0}, 800); // 페이지 상단으로 이동
+				document.body.scrollTop = document.body.scrollHeight;				
 			});
 
 			$(".js-alert-close").on("click", function(e) {
