@@ -25,24 +25,26 @@
 
 	<script>
 		$(document).ready(function(){
+			$("#alert").hide();
+			$("#result").hide();
+
 			$(".js-done").on("click", function(e) {
 				e.preventDefault();	
 
 				var _input = $("input");
 
 				for (var i=1; i<= 15; ++i) {
-					var nameValue = 'question'+i;
-					console.log("nameValue: "+nameValue);
-					var nameValue1 = ':radio[name='+nameValue+']:checked';
-					console.log("nameValue: "+nameValue1);
-
-					if ($(':radio[name="question"'' + i + '"]:checked').val()) {
+					if ($(':radio[name="question' + i + '"]:checked').val()) {
 						console.log("question"+i+" checked");
 					}
 					else {
 						console.log("question"+i+" unchecked");	
+						$("#alert-text").text(i + "번 항목을 입력해 주세요.");
+						$("#alert").show();		
+						return false;
 					}
 				}
+				$("#alert").hide();	
 
 				var group1Sum = parseInt($(':radio[name="question4"]:checked').val()) +
 									parseInt($(':radio[name="question6"]:checked').val()) + 
@@ -68,8 +70,25 @@
 				console.log("충돌의 두려움: " + group2Sum);
 				console.log("헌신의 결핍: " + group3Sum);
 				console.log("책임의 회피: " + group4Sum);
-				console.log("결과에 대한 무관심: " + group5Sum);								
+				console.log("결과에 대한 무관심: " + group5Sum);			
+
+				$("#result").html(
+					"<h3>결과</h3>" +
+					"<p><strong>신뢰의 결핍: </strong>" + group1Sum + "</p>" +
+					"<p><strong>충돌의 두려움: </strong>" + group2Sum + "</p>" +
+					"<p><strong>헌신의 결핍: </strong>" + group3Sum + "</p>" +
+					"<p><strong>책임의 회피: </strong>" + group4Sum + "</p>" +
+					"<p><strong>결과에 대한 무관심: </strong>" + group5Sum + "</p>"
+					);
+				$("#result").show(500);
+
+				$('html, body').animate({scrollBottom:0}, 800); // 페이지 상단으로 이동
 			});
+
+			$(".js-alert-close").on("click", function(e) {
+				console.log(".js-alert-close");
+				$("#alert").hide();				
+			});			
 		});
 	</script>
 </head>
@@ -630,10 +649,19 @@
 					</div>
 				</div> <!-- row -->																								
 
+				<div class="row" id="alert">
+					<div class="alert alert-dismissible alert-danger">
+						<button type="button" class="js-alert-close close" data-dismiss="alert">×</button>
+						<p id="alert-text"></p>
+					</div>
+				</div>
 
 				<button type="submit" class="js-done btn btn-raised btn-info">완료</button>
 			</div><!-- form-group -->
 		</form>
+
+		<div class="well" id="result">
+		</div>
 
 	</div>
 </body>
