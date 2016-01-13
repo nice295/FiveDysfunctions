@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "svcux"
+    },
+    "svcux": {
+      "applicationId": "HAebYi9b6235tN2asmz5mhjd8zxAJ55I3hrZAaD4"
+    }
+  }
+}
